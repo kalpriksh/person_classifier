@@ -20,8 +20,8 @@ def face_finder(image_data=None, image_path=None):
   try:
     if image_data is not None:
       image_ = get_cv2_image_from_b64(image_data)
-    elif image_path is not None:
-      image_ = cv2.imread(image_path)
+    else:
+      image_ = get_cv2_image_from_b64(image_path)
       
     image_gray = cv2.cvtColor(image_, cv2.COLOR_RGB2GRAY)
   except Exception as e:
@@ -35,8 +35,7 @@ def face_finder(image_data=None, image_path=None):
   for (x, y, w, h) in faces:
     cropped_image = image_[y:y+h,x:x+w]
     eyes = eye_cascade.detectMultiScale(image_gray[y:y+h,x:x+w])
-    # if len(eyes) > 1:
-    if cropped_image is not None:
+    if len(eyes) > 1:
       cropped_face_images.append(cropped_image)
   
   return cropped_face_images

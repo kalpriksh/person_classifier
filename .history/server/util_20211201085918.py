@@ -13,7 +13,7 @@ __model = None
 
 def classify_image(b64_image_data=None, file_path=None):
   
-  faces = face_finder.face_finder(image_data=b64_image_data, image_path=file_path)
+  faces = face_finder.face_finder(image_data=b64_image_data, file_path=file_path)
   result = []
   if faces is None or len(faces) == 0 :
     print("no face found")
@@ -66,5 +66,5 @@ def load_saved_artifacts():
 if __name__ == '__main__':
   load_saved_artifacts()
   
-  # print(classify_image(file_path='./model/data/warren buffett/8 timeless quotes from Warren Buffett....jpg'))
+  print(classify_image(image_path=))
   # print(classify_image(get_b64_image(), None))

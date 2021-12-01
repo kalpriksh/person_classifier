@@ -17,5 +17,4 @@ def classify_person():
   return response
 
 if __name__ == "__main__":
-  util.load_saved_artifacts()
   app.run(port=5000)

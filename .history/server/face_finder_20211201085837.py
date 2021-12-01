@@ -21,7 +21,7 @@ def face_finder(image_data=None, image_path=None):
     if image_data is not None:
       image_ = get_cv2_image_from_b64(image_data)
     elif image_path is not None:
-      image_ = cv2.imread(image_path)
+      image_ = get_cv2_image_from_b64(image_path)
       
     image_gray = cv2.cvtColor(image_, cv2.COLOR_RGB2GRAY)
   except Exception as e:

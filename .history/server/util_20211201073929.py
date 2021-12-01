@@ -13,9 +13,9 @@ __model = None
 
 def classify_image(b64_image_data=None, file_path=None):
   
-  faces = face_finder.face_finder(image_data=b64_image_data, image_path=file_path)
+  faces = face_finder.face_finder(image_data=b64_image_data)
   result = []
-  if faces is None or len(faces) == 0 :
+  if len(faces) == 0 or faces is None:
     print("no face found")
     return
   try:
@@ -30,11 +30,7 @@ def classify_image(b64_image_data=None, file_path=None):
     
     X = np.array(X).reshape(len(X), 16384).astype(float)
 
-    result.append({
-      'class' : __class_index_to_name[__model.predict(X)[0]],
-      'class_probability' : np.round(__model.predict_proba(X)*100,2).tolist()[0],
-      'class_dict' : __class_name_to_index
-      })
+    result.append(__model.predict(X)[0])
   except Exception as e:
     print(e)
 
@@ -65,6 +61,4 @@ def load_saved_artifacts():
 
 if __name__ == '__main__':
   load_saved_artifacts()
-  
-  # print(classify_image(file_path='./model/data/warren buffett/8 timeless quotes from Warren Buffett....jpg'))
-  # print(classify_image(get_b64_image(), None))
+  print(classify_image(get_b64_image(), None))

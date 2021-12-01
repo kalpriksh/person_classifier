@@ -1,7 +1,5 @@
 import pywt
 import cv2
-import numpy as np
-
 
 def w2d(img, mode='haar', level=1):
   imArray = img

@@ -66,5 +66,5 @@ def load_saved_artifacts():
 if __name__ == '__main__':
   load_saved_artifacts()
   
-  # print(classify_image(file_path='./model/data/warren buffett/8 timeless quotes from Warren Buffett....jpg'))
+  print(classify_image(file_path='.model/data/warren buffett/8 timeless quotes from Warren Buffett....jpg'))
   # print(classify_image(get_b64_image(), None))

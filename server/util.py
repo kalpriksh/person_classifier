@@ -11,6 +11,9 @@ __class_index_to_name = {}
 
 __model = None
 
+def test_fuction():
+  return 'util init'
+
 def classify_image(b64_image_data=None, file_path=None):
   
   faces = face_finder.face_finder(image_data=b64_image_data, image_path=file_path)
@@ -52,19 +55,16 @@ def load_saved_artifacts():
   global __class_index_to_name
   global __class_name_to_index
   
-  with open('./server/artifacts/person_dict.json', 'r') as f:
+  with open('./artifacts/person_dict.json', 'r') as f:
     __class_name_to_index = json.load(f)
     __class_index_to_name = {v:k for k,v in __class_name_to_index.items()}
     
   global __model
   if __model is None:
-    with open('./server/artifacts/saved_model.pkl', 'rb') as f:
+    with open('./artifacts/saved_model.pkl', 'rb') as f:
       __model = joblib.load(f)
   
   print('Loading Complete.....')
 
 if __name__ == '__main__':
   load_saved_artifacts()
-  
-  # print(classify_image(file_path='./model/data/warren buffett/8 timeless quotes from Warren Buffett....jpg'))
-  # print(classify_image(get_b64_image(), None))

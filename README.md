@@ -1,4 +1,4 @@
-# rich_person_classifier
+# person_classifier
 
 ### Application to detect a person from an image 
 - ML Model

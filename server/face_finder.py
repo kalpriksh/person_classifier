@@ -12,8 +12,8 @@ def get_cv2_image_from_b64(b46_image):
 def face_finder(image_data=None, image_path=None):
   # haar classifier defined
   
-  face_cascade = cv2.CascadeClassifier('./server/haarcascades/haarcascade_frontalface_default.xml')
-  eye_cascade = cv2.CascadeClassifier('./server/haarcascades/haarcascade_eye.xml')
+  face_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_frontalface_default.xml')
+  eye_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_eye.xml')
 
   image_ = ''
   image_gray = ''
@@ -40,16 +40,3 @@ def face_finder(image_data=None, image_path=None):
       cropped_face_images.append(cropped_image)
   
   return cropped_face_images
-  #check if only a single face is found
-  # if len(faces) == 1:
-  #   # check if there are two eyes
-  #   eyes = eye_cascade.detectMultiScale(image_gray)
-  #   if len(eyes) > 1:
-  #     # return cropped image
-  #     (x, y, w, h) = faces[0]
-  #     image_cropped = image_[y:y+h, x:x+w]
-  #     return image_cropped
-  #   else:
-  #     return
-  # else:
-  #   return
